@@ -28,6 +28,21 @@
   color: #61dafb;
 }
 
+
+
+/* 自作のCSS */
+.nav {
+  display: flex;
+}
+
+.home {
+  margin-right: 5px;
+}
+
+.create {
+  margin-left: 5px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
