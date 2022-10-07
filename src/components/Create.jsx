@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export const Create = () => {
 
     const [title, setTitle] = useState("");
-    // const [body, setBody] = useState("");
+    const [body, setBody] = useState("");
     const [data, setData] = useState([]);
     const [isPost, setIsPost] = useState(false);
 
@@ -18,23 +18,6 @@ export const Create = () => {
     });
     }, [isPost]);
 
-    
-    const dataList = data.map((item) => {
-        return (
-        <>
-        <p>{item.title}</p>
-        </>
-    );
-    });
-
-    // const bodyList = data.map((item) => {
-    //     return (
-    //     <>
-    //     <p>{item.body}</p>
-    //     </>
-    // );
-    // });
-
 
     const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,21 +25,30 @@ export const Create = () => {
     axios
         .post(
         "http://localhost:8000/api/posts",
-        { title }
-        // { body }
-        // { withCredentials: true }
+        { title,body }
         )
         .then((res) => {
         console.log(res);
         setIsPost(true);
         setTitle("");
-        // setBody("");
+        setBody("");
+
         })
         .catch((err) => {
         console.log(err);
         });
     };
     console.log(isPost);
+
+    const dataList = data.map((item) => {
+        return (
+        <>
+        <h3>Title:{item.title}</h3>
+        <p>{item.body}</p>
+        </>
+    );
+    });
+
 
     return (
         <div>
@@ -77,13 +69,13 @@ export const Create = () => {
                 onChange={(e) => setTitle(e.target.value)}
                 />
 
-                {/* <input
+                <input
                 type="body"
                 placeholder="body"
                 name="body"
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
-                /> */}
+                />
                 <button type="submit">Submit</button>
             </form>
             {dataList}
@@ -91,4 +83,3 @@ export const Create = () => {
         </div>
     )
 }
-

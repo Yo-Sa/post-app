@@ -5,6 +5,8 @@ import { Routes, Route } from "react-router-dom";
 // import { PostList } from './components/PostList';
 import { Home } from "./components/Home";
 import { Create } from './components/Create';
+import { Post } from "./components/Post";
+
 
 function App() {
   
@@ -17,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<Create />} />
+        <Route path="/posts/:id" element={<Post />} />
       </Routes>
     </div>
   );
