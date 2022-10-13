@@ -20,9 +20,9 @@ export const Home = () => {
             });
     }, []);
         console.log(posts);
-    const listPosts = posts.map((post) => {
+    const listPosts = posts.map((post,index) => {
         return (
-            <div>
+            <div key={index}>
             <Link to={`/posts/${post.id}`}>{post.title}</Link>
             </div>
         );
@@ -33,7 +33,7 @@ export const Home = () => {
         <div>
             <header>
                 <div>
-                    <h1 className="title">Home</h1>
+                    <h1 className="title" >Home</h1>
                 </div>
                 <nav className='nav'>
                     <Link to="/" className='home'>home</Link>
@@ -44,11 +44,6 @@ export const Home = () => {
                 <h2>PostList</h2>
                 {listPosts}
             </div>
-            
-            <div>
-                {/* <Create /> */}
-            </div>
-            
         </div>
     )
 }

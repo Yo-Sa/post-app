@@ -6,53 +6,19 @@ import { Link,useParams } from "react-router-dom";
 export const Post = () => {
   const {id} = useParams();
   // console.log(id);
-  const [post, setPost] = useState([]);
-  
-
-  // useEffect(() => {
-  //   const fetchPost = async () => {
-  //     const res = await fetch(
-  //       `http://localhost:8000/api/posts/${id}`
-  //     );
-  //     const data = await res.json();
-  //     setPost(data);
-  //   };
-  //   fetchPost();
-  // }, [id]);
-  // const [posts, setPosts] = useState([]);
+  const [post, setPost] = useState({});
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/posts/`)
+      .get(`http://localhost:8000/api/posts/${id}`)
         .then((res) => {
         setPost(res.data);
         })
         .catch((err) => {
         console.log(err);
         });
-    }, []);
+    }, [id]);
   console.log(post);
-
-//   useEffect(() => {
-//     axios.get(`http://localhost:8000/api/posts/`)
-//     .then(res => {
-//         setPosts(res.data)
-//     })
-// }, [])
-
-  // console.log(posts[0]);
-
-//   const listPosts = posts.map((post) => {
-//     return (
-//         <div>
-//           {post.id}
-//         </div>
-//     );
-// });
-
-
-
-  // const post = posts.find((post) => post.id === Number(id));
 
   return (
     <div>
@@ -68,7 +34,9 @@ export const Post = () => {
       <div className="list">
         <h2>PostList</h2>
           {/* <p>ID:{id}</p> */}
-          <p>TITLE:{post.title}</p>
+          <h1>{post.title}</h1>
+          <p>{post.body}</p>
+          <p>{post.created_at}</p>
       </div>
 
 

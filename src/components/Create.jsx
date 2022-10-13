@@ -1,6 +1,6 @@
 // import React from 'react'
 import axios from "axios";
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
 
@@ -8,16 +8,7 @@ export const Create = () => {
 
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
-    const [data, setData] = useState([]);
     const [isPost, setIsPost] = useState(false);
-
-    useEffect(() => {
-    axios.get("http://localhost:8000/api/posts").then((res) => {
-        // console.log(res.data);
-        setData(res.data);
-    });
-    }, [isPost]);
-
 
     const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,16 +30,6 @@ export const Create = () => {
         });
     };
     console.log(isPost);
-
-    const dataList = data.map((item) => {
-        return (
-        <>
-        <h3>Title:{item.title}</h3>
-        <p>{item.body}</p>
-        </>
-    );
-    });
-
 
     return (
         <div>
@@ -78,8 +59,7 @@ export const Create = () => {
                 />
                 <button type="submit">Submit</button>
             </form>
-            {dataList}
-            {/* {bodyList} */}
+
         </div>
     )
 }
