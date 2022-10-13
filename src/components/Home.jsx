@@ -32,14 +32,19 @@ export const Home = () => {
     return (
         <div>
             <header>
+                <div>
+                    <h1 className="title">Home</h1>
+                </div>
                 <nav className='nav'>
                     <Link to="/" className='home'>home</Link>
                     <Link to="/create" className='create'>create</Link>
-                    <h1>Home</h1>
                 </nav>
             </header>
-            <h2>一覧</h2>
-            {listPosts}
+            <div className="list">
+                <h2>PostList</h2>
+                {listPosts}
+            </div>
+            
             <div>
                 {/* <Create /> */}
             </div>

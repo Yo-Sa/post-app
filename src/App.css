@@ -31,16 +31,31 @@
 
 
 /* 自作のCSS */
-.nav {
+.header {
   display: flex;
+}
+
+.title {
+  float: left;
+}
+
+.nav {
+  float: right;
+  margin-top: 20px;
 }
 
 .home {
   margin-right: 5px;
+  
 }
 
 .create {
   margin-left: 5px;
+  margin-left: 5px;
+}
+
+.list {
+  padding-top: 100px;
 }
 
 

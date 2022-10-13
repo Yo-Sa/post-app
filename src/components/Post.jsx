@@ -4,42 +4,73 @@ import { Link,useParams } from "react-router-dom";
 
 
 export const Post = () => {
-  const { id } = useParams();
-  const [posts, setPosts] = useState([]);
+  const {id} = useParams();
+  // console.log(id);
+  const [post, setPost] = useState([]);
+  
+
+  // useEffect(() => {
+  //   const fetchPost = async () => {
+  //     const res = await fetch(
+  //       `http://localhost:8000/api/posts/${id}`
+  //     );
+  //     const data = await res.json();
+  //     setPost(data);
+  //   };
+  //   fetchPost();
+  // }, [id]);
+  // const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/posts")
+      .get(`http://localhost:8000/api/posts/`)
         .then((res) => {
-        setPosts(res.data);
+        setPost(res.data);
         })
         .catch((err) => {
         console.log(err);
         });
     }, []);
+  console.log(post);
 
-  console.log(posts);
+//   useEffect(() => {
+//     axios.get(`http://localhost:8000/api/posts/`)
+//     .then(res => {
+//         setPosts(res.data)
+//     })
+// }, [])
 
-  const contents = posts.find((post) => post.id === Number(id));
+  // console.log(posts[0]);
+
+//   const listPosts = posts.map((post) => {
+//     return (
+//         <div>
+//           {post.id}
+//         </div>
+//     );
+// });
+
+
+
+  // const post = posts.find((post) => post.id === Number(id));
 
   return (
     <div>
       <header>
-        <nav className='nav'>
-          <h1>
-            TEST POST APP
-          </h1>
-          <Link to="/" className='home'>home</Link>
-          <Link to="/create" className='create'>create</Link>
-        </nav>
+        <div>
+            <h1 className="title">Post</h1>
+        </div>
+          <nav className='nav'>
+              <Link to="/" className='home'>home</Link>
+              <Link to="/create" className='create'>create</Link>
+          </nav>
       </header>
+      <div className="list">
+        <h2>PostList</h2>
+          {/* <p>ID:{id}</p> */}
+          <p>TITLE:{post.title}</p>
+      </div>
 
-      <h2>
-        {contents.title}
-      </h2>
-      <p>
-        {contents.body}
-      </p>
 
     </div>
   )

@@ -1,5 +1,5 @@
 import './App.css';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route,Link } from "react-router-dom";
 
 // import { InputForm } from './components/InputForm';
 // import { PostList } from './components/PostList';
@@ -13,6 +13,7 @@ function App() {
   return (
     
     <div className="App">
+      
 
       {/* 画面遷移の記述 */}
       
