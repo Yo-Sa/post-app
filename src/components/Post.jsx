@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link,useParams } from "react-router-dom";
-
+import { useGetPosts } from "../hooks/useGetPosts";
 
 export const Post = () => {
   const {id} = useParams();
   // console.log(id);
-  const [post, setPost] = useState({});
+  // const {posts} = useGetPosts();
+
+
+  const [posts, setPosts] = useState({});
 
   useEffect(() => {
     axios
       .get(`http://localhost:8000/api/posts/${id}`)
         .then((res) => {
-        setPost(res.data);
+        setPosts(res.data);
         })
         .catch((err) => {
         console.log(err);
         });
     }, [id]);
-  console.log(post);
+  console.log(posts);
 
   return (
     <div>
@@ -34,9 +37,9 @@ export const Post = () => {
       <div className="list">
         <h2>PostList</h2>
           {/* <p>ID:{id}</p> */}
-          <h1>{post.title}</h1>
-          <p>{post.body}</p>
-          <p>{post.created_at}</p>
+          <h1>{posts.title}</h1>
+          <p>{posts.body}</p>
+          <p>{posts.created_at}</p>
       </div>
 
 

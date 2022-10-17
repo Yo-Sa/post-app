@@ -1,25 +1,12 @@
-import axios from "axios";
-import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-// import Create from "./Create";
+import { useGetPosts } from "../hooks/useGetPosts";
 
 
 
 export const Home = () => {
     
-    const [posts, setPosts] = useState([]);
+    const {posts} = useGetPosts();
 
-    useEffect(() => {
-        axios
-            .get("http://localhost:8000/api/posts")
-            .then((res) => {
-            setPosts(res.data);
-            })
-            .catch((err) => {
-            console.log(err);
-            });
-    }, []);
-        console.log(posts);
     const listPosts = posts.map((post,index) => {
         return (
             <div key={index}>
